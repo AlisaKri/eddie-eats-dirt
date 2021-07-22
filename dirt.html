@@ -5,6 +5,7 @@
         <title>Stop Eating Dirt, Eddie</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  
         <link href="styles/style.css" rel="stylesheet">
+        
     </head>
 
     <!-- Add a nav bar to go home-->
@@ -15,7 +16,7 @@
 
         <div class="introduction">
             <p>In standard tuning, the guitar strings are tuned to the notes E, A, D, G, B, E. 
-                The playfull phrase <b>"Eddie Ate Dirt, Good Bye Eddie"</b>
+                The playful phrase <b>"Eddie Ate Dirt, Good Bye Eddie"</b>
                 helps to remember this sequence.</p>
                 <p> This game will train you to remember the note
                 of each string without reciting this phrase over and over again, so poor Eddie
@@ -23,8 +24,35 @@
             </p>
         </div>
 
-        <div class="fretboard">
-            <img src="./images/fretboard.webp" width="80%"/>
+        <div class="instructions">
+            <p>When a string lights up, click on the correct note.</p>
         </div>
+
+        <!-- add function that initiates the play-->
+        <div class="play">
+            <button class="btn" id="startplay" >Let's Play!</button>
+        </div>
+        
+
+        <div class="fretboard">
+            <img id="fretboardImage" src="../images/fretboard_transparent.png" alt="empty fretboard" width="80%">
+            
+        </div>
+        <div class="feedback">
+            <p> </p>
+        </div>
+
+        <div class="play-buttons">
+            <button class="btn note" id="El">low E</button>
+            <button class="btn note" id="A">A</button>
+            <button class="btn note" id="D">D</button>
+            <button class="btn note" id="G">G</button>
+            <button class="btn note" id="B">B</button>
+            <button class="btn note" id="Eh">high E</button>
+        </div>
+        <footer class="attribution">
+            <a href="https://www.vecteezy.com/free-vector/fretboard">Fretboard Vectors by Vecteezy</a>
+        </footer>
+        <script src="scripts/dirt.js" ></script>
     </body>
 </html>

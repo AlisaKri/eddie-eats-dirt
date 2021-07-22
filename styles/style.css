@@ -4,13 +4,23 @@
 }
 @-ms-viewport{
     width: device-width;
-  }
+}
+
+#preload-empty { content: url(../images/fretboard_transparent.png) }
+#preload-eh { content: url(../images/fretboard_eh.png) }
+#preload-b { content: url(../images/fretboard_b.png) }
+#preload-g { content: url(../images/fretboard_g.png) }
+#preload-d { content: url(../images/fretboard_d.png) }
+#preload-a { content: url(../images/fretboard_a.png) }
+#preload-el { content: url(../images/fretboard_el.png) }
+
 
 body {
     font-family: Copperplate, "Muli", perpetua, serif;
     background-color: #ebebeb;
     color:rgba(3, 28, 25, 0.84);
     font-size:3vw;
+    text-align: center;
 }
 
 .banner{
@@ -86,7 +96,22 @@ h1{
     font-size: 1.5vw;
     padding-left: 10%;
     padding-right: 10%;
-    
+}
+div.fretboard {
+    text-align: center;
+    /*content: url('../images/fretboard_transparent.png');*/
+    width: 80%;
+
+}
+
+footer{
+    font-size: 1vw;
+    text-align:right;
+}
+
+footer a {
+    text-decoration: none;
+    color:rgba(3, 28, 25, 0.84);
 }
   
   
