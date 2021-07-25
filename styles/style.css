@@ -97,12 +97,17 @@ h1{
     padding-left: 10%;
     padding-right: 10%;
 }
-div.fretboard {
+.fretboard {
     text-align: center;
     /*content: url('../images/fretboard_transparent.png');*/
     width: 80%;
 
 }
+
+.feedback-text {
+    opacity: 0%;
+}
+
 
 footer{
     font-size: 1vw;

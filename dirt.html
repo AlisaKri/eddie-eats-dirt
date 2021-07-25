@@ -5,6 +5,11 @@
         <title>Stop Eating Dirt, Eddie</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  
         <link href="styles/style.css" rel="stylesheet">
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous"></script>
+        <script src="scripts/dirt.js" ></script>
         
     </head>
 
@@ -30,16 +35,16 @@
 
         <!-- add function that initiates the play-->
         <div class="play">
-            <button class="btn" id="startplay" >Let's Play!</button>
+            <button class="btn play-btn" id="startplay" >Let's Play!</button>
         </div>
         
 
         <div class="fretboard">
-            <img id="fretboardImage" src="../images/fretboard_transparent.png" alt="empty fretboard" width="80%">
+            <img class="fretboard-image" src="../images/fretboard_transparent.png" alt="empty fretboard" width="80%">
             
         </div>
         <div class="feedback">
-            <p> </p>
+            <p class="feedback-text"> feedback  </p>
         </div>
 
         <div class="play-buttons">
@@ -53,6 +58,6 @@
         <footer class="attribution">
             <a href="https://www.vecteezy.com/free-vector/fretboard">Fretboard Vectors by Vecteezy</a>
         </footer>
-        <script src="scripts/dirt.js" ></script>
+        
     </body>
 </html>

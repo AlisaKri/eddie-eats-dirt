@@ -1,8 +1,6 @@
 //global variables
 var STRINGS = ["Eh", "B", "G", "D", "A", "El"]
 var ACTIVE_STRING = "";
-var FEEDBACK = document.querySelector(".feedback");
-var FRETBOARD = document.getElementById("fretboardImage");
 var GAMECOUNTER = 0;
 var IMAGES = new Array();
 
@@ -11,14 +9,11 @@ let getRandomInt = (max)  => {
     }
   
 let resetGame = () => {
-    FEEDBACK.innerHTML = "<p> </p>";
-    FRETBOARD.style.content = 'url(../images/fretboard_transparent.png)';
+    $('.feedback-text').css("opacity", "0%");
     ACTIVE_STRING = "";
-    GAMECOUNTER++;
-    
+    GAMECOUNTER++;  
 }
-function loadImages() {
-    
+function loadImages() { 
     //preload images
     var fretboard_empty = new Image();
     var fretboard_eh = new Image();
@@ -27,7 +22,6 @@ function loadImages() {
     var fretboard_d = new Image();
     var fretboard_a = new Image();
     var fretboard_el = new Image();
-
     fretboard_empty.src = "../images/fretboard_transparent.png";
     fretboard_eh.src = "../images/fretboard_eh.png";
     fretboard_b.src = "../images/fretboard_b.png";
@@ -46,15 +40,14 @@ function loadImages() {
 }
 
 let checkButton = (event) => {
-    let button = event.target.id;
-
+    let button = event.currentTarget.id;
     if (button == ACTIVE_STRING) {
         //replace with counter
-        FEEDBACK.innerHTML = "correct";
+        $('.feedback-text').text("Correct").css("opacity", "100%");
     }
     else {
         //replace with counter
-        FEEDBACK.innerHTML = "incorrect";
+        $('.feedback-text').text("Incorrect").css("opacity", "100%");
     }
     //I have to learn about promises to do this thing better
     setTimeout(function(){
@@ -65,35 +58,24 @@ let checkButton = (event) => {
             }
             else
             {
-                FEEDBACK.innerHTML = "game over";
+                $('.feedback-text').text("game over").css("opacity", "100%");
+                $('.note').off('click');
             }        
-        },1000);
-    }, 1000);
-        
-    
-    
-    
-}
+        },200);
+    }, 600);    
+};
 
 let startPlay = () => {
-    
-    //How to repeat this code several times??
-        //alert(GAMECOUNTER);
-        var index = getRandomInt(6);
-        var image = IMAGES[index];
-        ACTIVE_STRING = STRINGS[index - 1];
-        FRETBOARD.style.content = 'url(' + image.src + ')';
-
-        //wait for a button click
+    var index = getRandomInt(6);
+    var image = IMAGES[index];
+    ACTIVE_STRING = STRINGS[index - 1];
+    $('.fretboard-image').attr("src", image.src);
+    $('.note').on('click', checkButton);
+}    
         
+//this now should just activate loadImages once the document is ready.    
+$(() => {
+    loadImages();
 
-        var buttons = document.querySelectorAll(".note");
-        buttons.forEach(element => {
-            element.addEventListener('click', checkButton);  
-        });
-    }
-        
-loadImages();
-
-let playButton = document.getElementById("startplay");
-playButton.addEventListener("click", startPlay);
+    $('.play-btn').on('click', startPlay);
+});
