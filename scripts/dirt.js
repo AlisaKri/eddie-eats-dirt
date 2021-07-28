@@ -2,6 +2,8 @@
 var STRINGS = ["Eh", "B", "G", "D", "A", "El"]
 var ACTIVE_STRING = "";
 var GAMECOUNTER = 0;
+var CORRECT = 0;
+var INCORRECT = 0;
 var IMAGES = new Array();
 
 let getRandomInt = (max)  => {
@@ -37,13 +39,17 @@ function loadImages() {
 let checkButton = (event) => {
     let button = event.currentTarget.id;
     if (button == ACTIVE_STRING) {
+        CORRECT++;
         $('.feedback-correct').show();
         $('.feedback-incorrect').hide();
+        
     }
     else {
+        INCORRECT++;
         $('.feedback-correct').hide();
         $('.feedback-incorrect').show();
     }
+    $('.counter').html(`${CORRECT} / ${GAMECOUNTER}`);
 
     if (GAMECOUNTER < 10){
         startPlay();
@@ -53,8 +59,10 @@ let checkButton = (event) => {
         $('.game-over').show();
         $('.note').off('click');
         $('.play-btn').on('click');
-        $('.play-btn').html('Play Again');
+        $('.play-btn').html('<h2>Play Again<h2>');
         GAMECOUNTER = 0;
+        CORRECT = 0;
+        INCORRECT = 0;
         $('.play-btn').off().one('click', startPlay);
     }                 
 };

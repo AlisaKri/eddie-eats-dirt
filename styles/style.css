@@ -1,6 +1,13 @@
 body {
     font-family: "Mulish", perpetua, serif;
-    background-image: url('../images/gold.jpg');
+    /*background-image: url('../images/gold.jpg');*/
+    background-image: url('../images/Grey.jpg');
+    /*background-image: url('../images/DD\ White\ Wood\ Background\ 34220.svg');*/
+    /*background-image: url('../images/vecteezy_abstract-gray-wood-texture-design_256656/P90.jpg');*/
+    /*background-image: url('../images/vecteezy_vector-wood-background-with-a-soft-gray-color_117400/free-vector-gray-wood-background.jpg');*/
+    background-size: cover;
+
+
     color: #ffffff;
     /*font-size:3vw;*/
     text-align: center;
@@ -102,7 +109,7 @@ footer{
 
 footer a {
     text-decoration: none;
-    color:rgba(3, 28, 25, 0.84);
+    color: white;
 }
 
 .feedback-correct{
@@ -114,9 +121,20 @@ footer a {
 }
 
 .game-over {
+    /*background-color: #EBF4FD;
+    opacity: 82%;*/
+    color: white;
+    border-radius: 10px 10px 10px 10px;
     text-align: center;
-    color: black;
     display: none;
+    font-weight:700;
+    font-size: xxx-large;
+}
+
+.counter {
+    color: white;
+    font-weight:700;
+    font-size: xxx-large;
 }
 
 
