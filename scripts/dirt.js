@@ -9,13 +9,19 @@ let getRandomInt = (max)  => {
     }
   
 let resetBoard = () => {
-    $('.fretboard-image').attr("src", IMAGES[0].src);
-    $('.feedback-correct').hide();
-    $('.feedback-incorrect').hide();
-    $('.game-over').hide();
-    ACTIVE_STRING = "";
-    GAMECOUNTER++;  
-}
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            $('.fretboard-image').attr("src", IMAGES[0].src);
+            $('.feedback-correct').hide();
+            $('.feedback-incorrect').hide();
+            $('.game-over').hide();
+            ACTIVE_STRING = "";
+            GAMECOUNTER++;  
+            resolve('board reset');
+        }
+        ,1000)
+    });
+};
 function loadImages() { 
     //preload images
     var fretboard_empty = new Image();
@@ -57,27 +63,24 @@ let checkButton = (event) => {
         $('.feedback-incorrect').show();
     }
     //I have to learn about promises to do this thing better
-    setTimeout(function(){
-        resetBoard();
-        setTimeout(function(){
-            if (GAMECOUNTER < 10){
-                startPlay();
-            }
-            else
-            {
-                $('.game-over').show();
-                $('.note').off('click');
-            }        
-        },600);
-    }, 200);  
+
+    if (GAMECOUNTER < 10){
+        startPlay();
+    }
+    else
+    {
+        $('.game-over').show();
+        $('.note').off('click');
+    }                 
 };
 
-let startPlay = () => {
+async function startPlay () {
+    await resetBoard();
     var index = getRandomInt(6);
     var image = IMAGES[index];
     ACTIVE_STRING = STRINGS[index - 1];
     $('.fretboard-image').attr("src", image.src);
-    $('.note').on('click', checkButton);
+    $('.note').off().one('click', checkButton);
 }    
         
 //this now should just activate loadImages once the document is ready.    
@@ -87,5 +90,6 @@ $(() => {
     });
     loadImages();
 
-    $('.play-btn').on('click', startPlay);
+    //$('.play-btn').off().on('click', startPlay);
+    $('.play-btn').off().one('click', startPlay);
 });
