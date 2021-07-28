@@ -52,6 +52,10 @@ let checkButton = (event) => {
     {
         $('.game-over').show();
         $('.note').off('click');
+        $('.play-btn').on('click');
+        $('.play-btn').html('Play Again');
+        GAMECOUNTER = 0;
+        $('.play-btn').off().one('click', startPlay);
     }                 
 };
 
@@ -78,17 +82,6 @@ let resetBoard = () => {
 };
 
 async function startPlay () {
-    /*showBlank()
-    .then( () => {
-        return resetBoard();
-    })
-    .then(() => {
-        var index = getRandomInt(6);
-        var image = IMAGES[index];
-        ACTIVE_STRING = STRINGS[index - 1];
-        $('.fretboard-image').attr("src", image.src);
-        $('.note').off().one('click', checkButton);
-    }); */
     await showBlank();
     await resetBoard();
     var index = getRandomInt(6);
