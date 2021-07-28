@@ -8,30 +8,6 @@ let getRandomInt = (max)  => {
     return Math.floor(Math.random() * max) + 1;
     }
   
-let showBlank = () => {    
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            $('.fretboard-image').attr("src", IMAGES[0].src);
-            $('.feedback-correct').hide();
-            $('.feedback-incorrect').hide();
-            $('.game-over').hide();
-            ACTIVE_STRING = "";
-            GAMECOUNTER++;  
-            resolve('board reset');
-        },1000);
-    });
-};
-
-//async function resetBoard () {
-let resetBoard = () => {
-    return showBlank().then(() => {
-        return prom = new Promise( (resolve, reject) => {
-            setTimeout(() => {
-                resolve('finished');
-            }, 1000);
-        });    
-    });
-};
 function loadImages() { 
     //preload images
     var fretboard_empty = new Image();
@@ -61,18 +37,13 @@ function loadImages() {
 let checkButton = (event) => {
     let button = event.currentTarget.id;
     if (button == ACTIVE_STRING) {
-        //replace with counter
-        //$('.feedback-text').text("Correct").css("opacity", "100%");
         $('.feedback-correct').show();
         $('.feedback-incorrect').hide();
     }
     else {
-        //replace with counter
-        //$('.feedback-text').text("Incorrect").css("opacity", "100%");
         $('.feedback-correct').hide();
         $('.feedback-incorrect').show();
     }
-    //I have to learn about promises to do this thing better
 
     if (GAMECOUNTER < 10){
         startPlay();
@@ -84,17 +55,40 @@ let checkButton = (event) => {
     }                 
 };
 
+let showBlank = () => {    
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            $('.fretboard-image').attr("src", IMAGES[0].src);
+            $('.feedback-correct').hide();
+            $('.feedback-incorrect').hide();
+            $('.game-over').hide();
+            ACTIVE_STRING = "";
+            GAMECOUNTER++;  
+            resolve('board reset');
+        },1000);
+    });
+};
+
+let resetBoard = () => {
+    return new Promise ((resolve, reject) => {
+        setTimeout(() => {
+            resolve('finished');
+        }, 1000);
+    });
+};
+
 function startPlay () {
-    //await resetBoard();
-    resetBoard().then(()=> {
+    showBlank().then( () => {
+        return resetBoard();
+    })
+    .then(() => {
         var index = getRandomInt(6);
         var image = IMAGES[index];
         ACTIVE_STRING = STRINGS[index - 1];
         $('.fretboard-image').attr("src", image.src);
         $('.note').off().one('click', checkButton);
-    })
-    
-}    
+    }); 
+};    
         
 //this now should just activate loadImages once the document is ready.    
 $(() => {
@@ -102,7 +96,5 @@ $(() => {
         $('.mode-menu').toggle();
     });
     loadImages();
-
-    //$('.play-btn').off().on('click', startPlay);
     $('.play-btn').off().one('click', startPlay);
 });
