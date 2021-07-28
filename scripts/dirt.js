@@ -8,7 +8,7 @@ let getRandomInt = (max)  => {
     return Math.floor(Math.random() * max) + 1;
     }
   
-let resetBoard = () => {
+let showBlank = () => {    
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             $('.fretboard-image').attr("src", IMAGES[0].src);
@@ -18,9 +18,17 @@ let resetBoard = () => {
             ACTIVE_STRING = "";
             GAMECOUNTER++;  
             resolve('board reset');
-        }
-        ,1000)
+        },1000);
     });
+};
+
+async function resetBoard () {
+    await showBlank();
+    return new Promise( (resolve, reject) => {
+        setTimeout(() => {
+            resolve('finished');
+        }, 1000);
+    });    
 };
 function loadImages() { 
     //preload images
