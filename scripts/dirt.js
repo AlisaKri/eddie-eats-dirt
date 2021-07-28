@@ -22,13 +22,15 @@ let showBlank = () => {
     });
 };
 
-async function resetBoard () {
-    await showBlank();
-    return new Promise( (resolve, reject) => {
-        setTimeout(() => {
-            resolve('finished');
-        }, 1000);
-    });    
+//async function resetBoard () {
+let resetBoard = () => {
+    return showBlank().then(() => {
+        return prom = new Promise( (resolve, reject) => {
+            setTimeout(() => {
+                resolve('finished');
+            }, 1000);
+        });    
+    });
 };
 function loadImages() { 
     //preload images
@@ -82,13 +84,16 @@ let checkButton = (event) => {
     }                 
 };
 
-async function startPlay () {
-    await resetBoard();
-    var index = getRandomInt(6);
-    var image = IMAGES[index];
-    ACTIVE_STRING = STRINGS[index - 1];
-    $('.fretboard-image').attr("src", image.src);
-    $('.note').off().one('click', checkButton);
+function startPlay () {
+    //await resetBoard();
+    resetBoard().then(()=> {
+        var index = getRandomInt(6);
+        var image = IMAGES[index];
+        ACTIVE_STRING = STRINGS[index - 1];
+        $('.fretboard-image').attr("src", image.src);
+        $('.note').off().one('click', checkButton);
+    })
+    
 }    
         
 //this now should just activate loadImages once the document is ready.    
