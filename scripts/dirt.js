@@ -73,12 +73,13 @@ let resetBoard = () => {
     return new Promise ((resolve, reject) => {
         setTimeout(() => {
             resolve('finished');
-        }, 1000);
+        }, 300);
     });
 };
 
-function startPlay () {
-    showBlank().then( () => {
+async function startPlay () {
+    /*showBlank()
+    .then( () => {
         return resetBoard();
     })
     .then(() => {
@@ -87,7 +88,15 @@ function startPlay () {
         ACTIVE_STRING = STRINGS[index - 1];
         $('.fretboard-image').attr("src", image.src);
         $('.note').off().one('click', checkButton);
-    }); 
+    }); */
+    await showBlank();
+    await resetBoard();
+    var index = getRandomInt(6);
+    var image = IMAGES[index];
+    ACTIVE_STRING = STRINGS[index - 1];
+    $('.fretboard-image').attr("src", image.src);
+    $('.note').off().one('click', checkButton);
+
 };    
         
 //this now should just activate loadImages once the document is ready.    
