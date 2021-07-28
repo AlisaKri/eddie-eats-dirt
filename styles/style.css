@@ -1,102 +1,88 @@
-@font-face {
-    font-family: "Muli";
-    src: url(https://fonts.gstatic.com/s/muli/v22/7Auwp_0qiz-afTLGLQjUwkQ.woff2);
-}
-@-ms-viewport{
-    width: device-width;
-}
-
-#preload-empty { content: url(../images/fretboard_transparent.png) }
-#preload-eh { content: url(../images/fretboard_eh.png) }
-#preload-b { content: url(../images/fretboard_b.png) }
-#preload-g { content: url(../images/fretboard_g.png) }
-#preload-d { content: url(../images/fretboard_d.png) }
-#preload-a { content: url(../images/fretboard_a.png) }
-#preload-el { content: url(../images/fretboard_el.png) }
-
-
 body {
-    font-family: Copperplate, "Muli", perpetua, serif;
-    background-color: #ebebeb;
-    color:rgba(3, 28, 25, 0.84);
-    font-size:3vw;
+    font-family: "Mulish", perpetua, serif;
+    background-image: url('../images/gold.jpg');
+    color: #ffffff;
+    /*font-size:3vw;*/
     text-align: center;
-}
-
-.banner{
-    
-    height: 100px;
-    margin:7px auto;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-    padding-left:10%;
-    background-color: #f0a90f;
-}
-.title {
-    font-family: Copperplate;
-    text-align: center;
-    font-weight: bolder;
 }
 
 h1{
-    font-size: 6vw;
-    padding:0px;
-    margin: 0px;
-    line-height:100px;
-    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
-    float:left;
+    font-family: "Molengo", perpetua, serif;
+    float: right;
     max-width: 100%;
     }
 
-.instruction{
-    text-align: center;
-    font-size: 4vw;
-    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+*.blue{
+    background-color: #1573CC;
+}
 
+*.grey {
+    background-color: #EBF4FD;
+    opacity: 82%;
 }
-.wrapper {
+
+*.div-text {
+    color: black;
     text-align: center;
-    display: inline-block;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    height: 100%;
-    width: 100%;
 }
+*.div-shadow {
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.25);
+}
+
+
 
 .box {
-    text-align: center;
-    display: inline-block;
-    border: black;
-    border-style: solid;
-    /*padding: 50px;
-    padding-top: 50px;*/
-    padding-bottom: 50px;
-    width: 25%;
-    margin: 20px;
-    position: relative;
-    background-color: #f0a90f;
+    font-family: "Molengo";
+    color: white;
+}
+
+h2{
+    float:left;
 }
 
 
 .btn {
-    font-size: 2vw;
-    color: #ebebeb;
-    background-color: rgba(3, 28, 25, 0.84);
+    color: #ffffff;
+    background-color:#105292;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.25);
 }
 
-.btn:hover {
-    cursor: pointer;
-    background-color: black;
+    .btn:hover {
+        cursor: pointer;
+        background-color: white;
+        color: #105292;
+    }
+
+nav {
+    color: #FFFFFF; }
+    nav .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: right; }
+    
+
+.mode-menu {
+    display: none;
+    color: white;
 }
 
-.introduction {
-    text-align: justify;
-    font-family: "Muli", perpetua, serif;
-    font-size: 1.5vw;
-    padding-left: 10%;
-    padding-right: 10%;
+.instructions-title{
+    background-color: #1573CC;
+    color: white;
+    border-radius: 10px 10px 0px 0px;
+    text-align: center;
 }
+
+.instructions-text{
+    background-color: #EBF4FD;
+    opacity: 82%;
+    color: black;
+    border-radius: 0px 0px 10px 10px;
+    text-align: center;
+}
+
 .fretboard {
     text-align: center;
     /*content: url('../images/fretboard_transparent.png');*/
@@ -118,6 +104,22 @@ footer a {
     text-decoration: none;
     color:rgba(3, 28, 25, 0.84);
 }
+
+.feedback-correct{
+    display: none;
+}
+
+.feedback-incorrect{
+    display: none;
+}
+
+.game-over {
+    text-align: center;
+    color: black;
+    display: none;
+}
+
+
   
   
 

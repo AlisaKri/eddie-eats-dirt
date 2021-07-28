@@ -1,41 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Molengo" />
+        <link href="https://fonts.googleapis.com/css2?family=Mulish&family=Open+Sans&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <title>Stop Eating Dirt, Eddie</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  
         <link href="styles/style.css" rel="stylesheet">
     </head>
 
     <body>
-        <div class="banner">
-            <div class="title"><h1>Stop Eatin' Dirt, Eddie</h1></div>
+        <!--p-5 means padding, mb-4 means margin bottom-->
+        <div class="p-5 mb-4 blue">
+            <!--py sets padding for top and bottom-->
+            <!-- container-fluid creates a full-width container-->
+            <div class="container-fluid p-5">
+                <!-- this display has nothing to do with CSS display, it affects the size of the letters. lower number means larger-->
+              <h1 class="display-3 fw-bold">Stop Eating Dirt, Eddie</h1>
+            </div>
         </div>
 
-        <div class="instruction">
-            <h2>Select a game</h2>
+
+        <div class="container p-4 grey lead div-text div-shadow">
+            <p>In standard tuning, the guitar strings are tuned to the notes E, A, D, G, B, E. 
+                The playful phrase <b>"Eddie Ate Dirt, Good Bye Eddie"</b>
+                helps to remember this sequence.</p>
+                <p> This game will train you to remember the note
+                of each string without reciting this phrase over and over again, so poor Eddie
+                can finally stop eating dirt.
+            </p>
         </div>
         
-        <div class="wrapper">
-            <div class="box">
-                <p>Eddie Ate Dirt</p>
-                <button class="btn" onclick="location.href='dirt.html'">Play</button>
+        
+            <div class="container my-4 p-4 blue box div-shadow">
+                <div class="row">
+                    <div class="col-8 ">
+                        <h2 class="display-5">Eddie Ate Dirt</h2>
+                    </div>
+                    <div class="col-4 text-end">
+                        <button class="btn div" onclick="location.href='dirt.html'"><h2 class="display-5">Play Now</h2></button>
+                    </div>
+                </div>
+                
             </div>
 
-            <div class="box">
-                <p>Find Eddie</p>
-                <button class="btn" onclick="location.href='find.html';">Play</button>
+            <div class="container my-4 p-4 blue box div-shadow">
+                <div class="row">
+                <div class="col-8">
+                    <h2 class="display-5">Find Eddie</h2>
+                </div>
+                <div class="col-4 text-end">
+                    <button class="btn" onclick="location.href='find.html'"><h2 class="display-5">Play Now</h2></button>
+                </div>
             </div>
-            <div class="box">
-                <p>Eddie Says</p>
-                <button class="btn" onclick="location.href='says.html';">Play</button>    
-            </div>    
-            <!--<div class="box">
-                <p>Jam with Eddie</p>
-                <button class="btn">Play</button>    
-            </div> -->
-        </div>  
-        <footer class="attribution">
+            </div>
+
+            <div class="container my-4 p-4 blue box div-shadow">
+                <div class="row">
+                <div class="col-8">
+                    <h2 class="display-5">Eddie Says</h2>
+                </div>
+                <div class="col-4 text-end">
+                    <button class="btn" onclick="location.href='says.html'"><h2 class="display-5">Play Now</h2></button>
+                </div>
+            </div>
+            </div>
+        
+
+
+
+ 
+ 
+            <footer class="attribution text-muted fixed-bottom">
             <a href="https://www.vecteezy.com/free-vector/gold-texture">Gold Texture Vectors by Vecteezy</a>
         </footer> 
         

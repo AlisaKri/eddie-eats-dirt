@@ -8,8 +8,11 @@ let getRandomInt = (max)  => {
     return Math.floor(Math.random() * max) + 1;
     }
   
-let resetGame = () => {
-    $('.feedback-text').css("opacity", "0%");
+let resetBoard = () => {
+    $('.fretboard-image').attr("src", IMAGES[0].src);
+    $('.feedback-correct').hide();
+    $('.feedback-incorrect').hide();
+    $('.game-over').hide();
     ACTIVE_STRING = "";
     GAMECOUNTER++;  
 }
@@ -43,26 +46,30 @@ let checkButton = (event) => {
     let button = event.currentTarget.id;
     if (button == ACTIVE_STRING) {
         //replace with counter
-        $('.feedback-text').text("Correct").css("opacity", "100%");
+        //$('.feedback-text').text("Correct").css("opacity", "100%");
+        $('.feedback-correct').show();
+        $('.feedback-incorrect').hide();
     }
     else {
         //replace with counter
-        $('.feedback-text').text("Incorrect").css("opacity", "100%");
+        //$('.feedback-text').text("Incorrect").css("opacity", "100%");
+        $('.feedback-correct').hide();
+        $('.feedback-incorrect').show();
     }
     //I have to learn about promises to do this thing better
     setTimeout(function(){
-        resetGame();
+        resetBoard();
         setTimeout(function(){
             if (GAMECOUNTER < 10){
                 startPlay();
             }
             else
             {
-                $('.feedback-text').text("game over").css("opacity", "100%");
+                $('.game-over').show();
                 $('.note').off('click');
             }        
-        },200);
-    }, 600);    
+        },600);
+    }, 200);  
 };
 
 let startPlay = () => {
@@ -75,6 +82,9 @@ let startPlay = () => {
         
 //this now should just activate loadImages once the document is ready.    
 $(() => {
+    $('#modeButton').on('click', () => {
+        $('.mode-menu').toggle();
+    });
     loadImages();
 
     $('.play-btn').on('click', startPlay);

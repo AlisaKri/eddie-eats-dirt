@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Stop Eating Dirt, Eddie</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Molengo" />
+        <link href="https://fonts.googleapis.com/css2?family=Mulish&family=Open+Sans&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <title>Eddie Ate Dirt</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  
         <link href="styles/style.css" rel="stylesheet">
         <script
@@ -13,52 +20,131 @@
         
     </head>
 
+
     <!-- Add a nav bar to go home-->
     <body>
-        <div class="banner">
-            <div class="title"><h1>Eddie Ate Dirt - New Design 2</h1></div>
+    
+        <!-- a span with the name-->
+    <div class="container-fluid mb-4 blue">
+        <div class="container py-2">
+            <div class="row">
+               <div class="col-8 text-start">
+                    <h2 class="mb-0">Eddie Ate Dirt, Good Bye Eddie</h2>
+                </div>
+                <div class="col-2 nav-button text-end">
+                    <!--<span>Home</span>-->
+                    <button class="btn" onclick="location.href='index.html'">Home</button>
+                </div>
+                <div class="col-2 nav-button text-end">
+                    <button class="btn" id="modeButton">
+                         Mode
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+        <div class="container mode-menu">
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-2 text-end blue">Visual</div>
+                <div class="col-2 text-end blue">Audio</div>
+                <div class="col-2 text-end blue">Mixed</div>
+            </div>    
         </div>
 
-        <div class="introduction">
-            <p>In standard tuning, the guitar strings are tuned to the notes E, A, D, G, B, E. 
-                The playful phrase <b>"Eddie Ate Dirt, Good Bye Eddie"</b>
-                helps to remember this sequence.</p>
-                <p> This game will train you to remember the note
-                of each string without reciting this phrase over and over again, so poor Eddie
-                can finally stop eating dirt.
-            </p>
-        </div>
+    
+    
 
-        <div class="instructions">
-            <p>When a string lights up, click on the correct note.</p>
+    
+ 
+
+
+        <div class="container p-4 lead">
+            <div class="row p-2 instructions-title"><span>Instructions</span></div>
+            <div class="row p-2 instructions-text"><span>When a string lights up, click on the correct note.</span></div>
         </div>
 
         <!-- add function that initiates the play-->
-        <div class="play">
-            <button class="btn play-btn" id="startplay" >Let's Play!</button>
-        </div>
-        
-
-        <div class="fretboard">
-            <img class="fretboard-image" src="../images/fretboard_transparent.png" alt="empty fretboard" width="80%">
+        <div class="container playboard mb-4">
             
-        </div>
-        <div class="feedback">
-            <p class="feedback-text"> feedback  </p>
-        </div>
+            <div class="row game-over">
+                <h2>Game Over</h2>
+                <h4> Click the Play button to play again.</h4>
+            </div>
+            <div class="row align-items-center mb-4">
+                <div class="col-2">
+                    <div class="feedback-incorrect">
+                        <img src="images/wrong.png" alt="WRONG">
+                    </div>
 
-        <div class="play-buttons">
-            <button class="btn note" id="El">low E</button>
-            <button class="btn note" id="A">A</button>
-            <button class="btn note" id="D">D</button>
-            <button class="btn note" id="G">G</button>
-            <button class="btn note" id="B">B</button>
-            <button class="btn note" id="Eh">high E</button>
+                </div>
+                <div class="col-8">
+                    <!--<div class="fretboard">-->
+                        <img class="fretboard-image" src="../images/fretboard_transparent.png" alt="empty fretboard" width="100%">
+                        
+                    <!--</div>-->
+                </div>
+                <div class="col-2">
+                    <div class="feedback-correct">
+                        <img src="images/correct.png" alt="CORRECT">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-2">
+
+                </div>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-2">
+                            <button class="btn note" id="El"><h3>low E</h3></button>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn note" id="A"><h3>&#160&#160&#160 A &#160&#160&#160  </h3></button>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn note" id="D"><h3>&#160&#160&#160 D &#160&#160&#160</h3></button>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn note" id="G"><h3>&#160&#160&#160 G &#160&#160&#160</h3></button>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn note" id="B"><h3>&#160&#160&#160 B &#160&#160&#160</h3></button>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn note" id="Eh"><h3>high E</h3></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-4">
+
+                </div>
+                <div class="col-4">
+                    <div class="start-play">
+                        <button class="btn play-btn" id="startplay" ><h2>Play</h2></button>
+                    </div>
+                </div>
+                <div class="col-4">
+
+                </div>
+            </div>
+            
+
+        
         </div>
-        <footer class="attribution">
+        <footer class="attribution text-muted fixed-bottom">
             <a href="https://www.vecteezy.com/free-vector/fretboard">Fretboard Vectors by Vecteezy</a>
+            <br/>
             <a href="https://www.vecteezy.com/free-vector/web">Web Vectors by Vecteezy</a>
         </footer>
-        
+        </div>
     </body>
-</html>
+</html> 
