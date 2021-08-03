@@ -5,6 +5,8 @@ var GAMECOUNTER = 0;
 var CORRECT = 0;
 var INCORRECT = 0;
 var IMAGES = new Array();
+var MAXGAME = 3;
+
 
 let getRandomInt = (max)  => {
     return Math.floor(Math.random() * max) + 1;
@@ -37,39 +39,70 @@ function loadImages() {
 }
 
 let checkButton = (event) => {
-    let button = event.currentTarget.id;
+    $('.note').off();
+    $(document).off('keypress');
+    
+    //alert(event.type);
+    let button;
+    if (event.type == 'click') {
+        button = event.currentTarget.id;
+    }
+    else {
+        //alert(event.keyCode)
+        switch (event.keyCode){
+            case 101: 
+                button = 'El';
+                break
+            case 97:
+                button = 'A';
+                break
+            case 100:
+                button = 'D';
+                break
+            case 103:
+                button = 'G';
+                break
+            case 98:
+                button = 'B';
+                break
+            case 69:
+                button = 'Eh';
+                break
+            default:
+                button = 'none';
+        }
+        var noteButtons = $('.note-grid').children();
+        noteButtons.children('#' + button).addClass('pressed');
+        //$('#' + button).addClass('pressed'); 
+
+    }
     if (button == ACTIVE_STRING) {
         CORRECT++;
         $('.feedback-correct').show();
         $('.feedback-incorrect').hide();
-        
+    
     }
     else {
         INCORRECT++;
         $('.feedback-correct').hide();
         $('.feedback-incorrect').show();
     }
+
     $('.counter').html(`${CORRECT} / ${GAMECOUNTER}`);
 
-    if (GAMECOUNTER < 10){
+    if (GAMECOUNTER < MAXGAME){
         startPlay();
     }
     else
     {
-        $('.game-over').show();
-        $('.note').off('click');
-        $('.play-btn').on('click');
-        $('.play-btn').html('<h2>Play Again<h2>');
-        GAMECOUNTER = 0;
-        CORRECT = 0;
-        INCORRECT = 0;
-        $('.play-btn').off().one('click', startPlay);
+        stopGame();     
     }                 
 };
 
 let showBlank = () => {    
     return new Promise((resolve, reject) => {
         setTimeout(() => {
+            $('.btn').removeClass('pressed');
             $('.fretboard-image').attr("src", IMAGES[0].src);
             $('.feedback-correct').hide();
             $('.feedback-incorrect').hide();
@@ -90,21 +123,88 @@ let resetBoard = () => {
 };
 
 async function startPlay () {
+    $('.play-btn').off();
+    $(document).off('keypress');
+    if (GAMECOUNTER == 0) {
+        $('.counter').html(` `);
+        $('.feedback-correct').hide();
+        $('.feedback-incorrect').hide();
+    }
+    $('.shuffle-btn').addClass('disabled');
+    $('.shuffle-btn').off();
+    $('.play-btn').addClass('disabled');
     await showBlank();
     await resetBoard();
     var index = getRandomInt(6);
     var image = IMAGES[index];
     ACTIVE_STRING = STRINGS[index - 1];
     $('.fretboard-image').attr("src", image.src);
-    $('.note').off().one('click', checkButton);
+    $('.note').off().on('click', checkButton);
+    $(document).on('keypress', checkButton);
 
 };    
-        
+
+async function stopGame() {
+    GAMECOUNTER = -1;
+    CORRECT = 0;
+    INCORRECT = 0;
+    await showBlank();
+    await resetBoard();
+    $('.note').off();
+    $('.play-btn').on('click');
+    $('.play-btn').removeClass('disabled')
+    $('.shuffle-btn').removeClass('disabled');
+    $('.shuffle-btn').on('click');  
+
+
+    $('.shuffle-btn').off().one('click', shuffleButtons);
+    $('.play-btn').off().one('click', startPlay);
+    $('.play-btn').html('<h2>Play Again<h2>');
+    $(document).on('keypress', checkKey);
+    $('.game-over').show();
+}
+
+let shuffleButtons = () =>  {
+    //shuffle order of buttons
+    $('.shuffle-btn').addClass('disabled');
+    var noteButtons = $('.note-grid').children();
+    var orderClasses = ['order-1', 'order-2', 'order-3', 'order-4', 'order-5', 'order-6']
+    var orderClassesUnchanged = ['order-1', 'order-2', 'order-3', 'order-4', 'order-5', 'order-6']
+    for (var i = 0; i < noteButtons.length; i++) {
+        var button = noteButtons[i];
+        var randomIndex = Math.floor(Math.random() * orderClasses.length);
+        // first remove old order classes 
+        for (var j = 0; j < 6; j++){
+            $(button).removeClass(orderClassesUnchanged[j]);
+        };
+        $(button).addClass(orderClasses[randomIndex]);
+        orderClasses.splice(randomIndex, 1);
+      }
+    
+}
+      
+let checkKey = (event) => {
+    //alert(event.keyCode)
+    switch(event.keyCode) {
+        case 112:
+            startPlay();
+            break
+        case 115:
+            shuffleButtons();
+            break;
+        default:
+            alert('doing nothing');
+    }
+}
 //this now should just activate loadImages once the document is ready.    
 $(() => {
     $('#modeButton').on('click', () => {
         $('.mode-menu').toggle();
     });
     loadImages();
+    $('.shuffle-btn').off().one('click', shuffleButtons)
+    //$('.shuffle-btn').on('click', shuffleButtons)
     $('.play-btn').off().one('click', startPlay);
+    $(document).on('keypress', checkKey);
 });
+

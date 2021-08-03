@@ -63,6 +63,16 @@ h2{
         color: #105292;
     }
 
+    .btn .disabled {
+        background-color:#687a8b;
+    }
+.pressed {
+    background-color: white;
+    color: #105292;
+}
+
+
+
 nav {
     color: #FFFFFF; }
     nav .nav-buttons {
@@ -146,6 +156,7 @@ footer a {
 .play-again {
     display: hide;
 }
-  
+
+
 
 
