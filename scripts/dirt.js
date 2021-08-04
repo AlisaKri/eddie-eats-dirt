@@ -1,3 +1,5 @@
+
+
 //global variables
 var STRINGS = ["Eh", "B", "G", "D", "A", "El"]
 var ACTIVE_STRING = "";
@@ -5,8 +7,13 @@ var GAMECOUNTER = 0;
 var CORRECT = 0;
 var INCORRECT = 0;
 var IMAGES = new Array();
-var MAXGAME = 3;
+var MAXGAME = 10;
 
+//sound varialbes
+var SOUNDS = new Array()
+var SOUNDMODE = true;
+var VISUALMODE = true;
+var RANDOMMODE = false;
 
 let getRandomInt = (max)  => {
     return Math.floor(Math.random() * max) + 1;
@@ -36,6 +43,32 @@ function loadImages() {
     IMAGES.push(fretboard_d);
     IMAGES.push(fretboard_a);
     IMAGES.push(fretboard_el);   
+}
+
+function loadSounds(){
+    //preload sounds
+    /*var soundHighE = new Audio("../sounds/1st_String_E_64kb.mp3");
+    var soundB = new Audio("../sounds/2nd_String_B_64kb.mp3");
+    var soundG = new Audio("../sounds/3rd_String_G_64kb.mp3");
+    var soundD = new Audio("../sounds/4th_String_D_64kb.mp3");
+    var soundA = new Audio("../sounds/5th_String_A_64kb.mp3");
+    var soundLowE = new Audio("../sounds/6th_String_E_64kb.mp3");*/
+    var soundHighE = new Audio("../sounds/1st_String_E_short.mov");
+    var soundB = new Audio("../sounds/2nd_String_B_short.mov");
+    var soundG = new Audio("../sounds/3rd_String_G_short.mov");
+    var soundD = new Audio("../sounds/4th_String_D_short.mov");
+    var soundA = new Audio("../sounds/5th_String_A_short.mov");
+    var soundLowE = new Audio("../sounds/6th_String_E_short.mov");    
+
+    SOUNDS.push(soundHighE);
+    SOUNDS.push(soundB);
+    SOUNDS.push(soundG);
+    SOUNDS.push(soundD);
+    SOUNDS.push(soundA);
+    SOUNDS.push(soundLowE);
+    
+
+
 }
 
 let checkButton = (event) => {
@@ -136,9 +169,36 @@ async function startPlay () {
     await showBlank();
     await resetBoard();
     var index = getRandomInt(6);
-    var image = IMAGES[index];
     ACTIVE_STRING = STRINGS[index - 1];
-    $('.fretboard-image').attr("src", image.src);
+    if (RANDOMMODE) {
+        let randomNumber = Math.random();
+        if (randomNumber > 0.66) {
+            VISUALMODE = true;
+            SOUNDMODE = false;
+        }
+        else if (randomNumber > 0.33) {
+            SOUNDMODE = true;
+            VISUALMODE = false;
+        }
+        else {
+            SOUNDMODE = true;
+            VISUALMODE = true;
+        }
+    }
+    if (VISUALMODE) {
+        var image = IMAGES[index];      
+        $('.fretboard-image').attr("src", image.src);
+    }
+    if (SOUNDMODE) {
+        var sound = SOUNDS[index - 1];
+        if (sound.paused) {
+            sound.play();
+        } else {
+            sound.currentTime = 0;
+            sound.play();
+        }
+        
+    }
     $('.note').off().on('click', checkButton);
     $(document).on('keypress', checkButton);
 
@@ -196,12 +256,50 @@ let checkKey = (event) => {
             alert('doing nothing');
     }
 }
+
+
 //this now should just activate loadImages once the document is ready.    
 $(() => {
     $('#modeButton').on('click', () => {
         $('.mode-menu').toggle();
     });
     loadImages();
+    loadSounds();
+
+    // attach event to mode button modes
+    $('.mode-type').on('click', (event) => {
+        modeType = event.target.id;
+        $('#' + modeType).addClass('selected'); 
+        var otherModeTypes = $('#' + modeType).parent().siblings()
+        for (i = 0; i < otherModeTypes.length; i++){
+            $(otherModeTypes[i]).children().removeClass('selected');
+        }
+
+        $('.instructions-text').addClass('disabled')
+        $('.instructions-text').siblings('#' + modeType).removeClass('disabled')
+
+        //alert(modeType);
+        if (modeType == 'audioMode' || modeType == 'mixedMode') {
+            SOUNDMODE = true;
+        }
+        else {
+            SOUNDMODE = false;
+        }
+        if (modeType == 'visualMode' || modeType == 'mixedMode') {
+            VISUALMODE = true;
+        }
+        else {
+            VISUALMODE = false;
+        }
+        if (modeType == 'randomMode') {
+            RANDOMMODE = true;
+        } else {
+            RANDOMMODE = false;
+        }
+
+    })
+
+
     $('.shuffle-btn').off().one('click', shuffleButtons)
     //$('.shuffle-btn').on('click', shuffleButtons)
     $('.play-btn').off().one('click', startPlay);

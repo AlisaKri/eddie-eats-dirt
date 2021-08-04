@@ -46,12 +46,31 @@
     </div>
         <div class="container mode-menu">
             <div class="row">
-                <div class="col-6"></div>
-                <div class="col-2 text-end blue">Visual</div>
-                <div class="col-2 text-end blue">Audio</div>
-                <div class="col-2 text-end blue">Mixed</div>
+                <div class="col-4"></div>
+                <div class="col-2 text-end blue">
+                    <div class="mode-type" id="visualMode">
+                        Visual
+                    </div>
+                </div>
+                <div class="col-2 text-end blue modeType">
+                    <div class="mode-type" id="audioMode">
+                        Audio
+                    </div>
+                </div> 
+                <div class="col-2 text-end blue">
+                    <div class="mode-type selected" id="mixedMode">
+                        Mixed
+                    </div>
+                </div>
+                <div class="col-2 text-end blue">
+                    <div class="mode-type" id="randomMode">
+                        Random
+                    </div>
+                </div>
             </div>    
         </div>
+
+
 
     
     
@@ -62,7 +81,26 @@
 
         <div class="container p-4 lead">
             <div class="row p-2 instructions-title"><span>Instructions</span></div>
-            <div class="row p-2 instructions-text"><span>When a string lights up, click on the correct note.</span></div>
+            <div class="row p-2 instructions-text" id="mixedMode"><span>In this game, you will see a string light up and will hear the open string ring. </span>
+                <span>Click on the button with the correct note. For an additional challenge, shuffle the order of the buttons</span>
+                <span>You can also use the keyboard using "E", "A", "G", "D", "B" and "Shift+E" keys.</span>
+                <span>Try also the visual, audio and random modes.</span>
+            </div>
+            <div class="row p-2 instructions-text disabled" id="visualMode"><span>In this game, you will see a string light up without sound. </span>
+                <span>Click on the button with the correct note. For an additional challenge, shuffle the order of the buttons</span>
+                <span>You can also use the keyboard using "E", "A", "G", "D", "B" and "Shift+E" keys.</span>
+                <span>Try also the audio, mixed and random modes.</span>
+            </div>
+            <div class="row p-2 instructions-text disabled" id="audioMode"><span>In this game, you hear an open string ring but the string will not light up. </span>
+                <span>Click on the button with the correct note. For an additional challenge, shuffle the order of the buttons</span>
+                <span>You can also use the keyboard using "E", "A", "G", "D", "B" and "Shift+E" keys.</span>
+                <span>Try also the visual, mixed and random modes.</span>
+            </div>
+            <div class="row p-2 instructions-text disabled" id="randomMode"><span>In this game, you will either see a string light up or will hear an open string ring. </span>
+                <span>Click on the button with the correct note. For an additional challenge, shuffle the order of the buttons</span>
+                <span>You can also use the keyboard using "E", "A", "G", "D", "B" and "Shift+E" keys.</span>
+                <span>Try also the visual, audio and mixed modes.</span>
+            </div>
         </div>
 
         <!-- add function that initiates the play-->
