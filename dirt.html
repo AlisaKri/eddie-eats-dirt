@@ -28,14 +28,14 @@
     <div class="container-fluid blue">
         <div class="container py-2">
             <div class="row">
-               <div class="col-8 text-start">
-                    <h2 class="mb-0">Eddie Ate Dirt, Good Bye Eddie</h2>
+               <div class="col-12 col-md-8 text-start">
+                    <h3 class="mb-0">Eddie Ate Dirt, Good Bye Eddie</h3>
                 </div>
-                <div class="col-2 nav-button text-end">
+                <div class="col-6 col-md-2 nav-button text-end">
                     <!--<span>Home</span>-->
                     <button class="btn" onclick="location.href='index.html'">Home</button>
                 </div>
-                <div class="col-2 nav-button text-end">
+                <div class="col-6 col-md-2 nav-button text-end">
                     <button class="btn" id="modeButton">
                          Mode
                     </button>
@@ -46,38 +46,29 @@
     </div>
         <div class="container mode-menu">
             <div class="row">
-                <div class="col-4"></div>
-                <div class="col-2 text-end blue">
+                <div class="col-xs-12 col-md-4"></div>
+                <div class="col-md-2 text-end blue">
                     <div class="mode-type" id="visualMode">
                         Visual
                     </div>
                 </div>
-                <div class="col-2 text-end blue modeType">
+                <div class="col-md-2 text-end blue modeType">
                     <div class="mode-type" id="audioMode">
                         Audio
                     </div>
                 </div> 
-                <div class="col-2 text-end blue">
+                <div class="col-md-2 text-end blue">
                     <div class="mode-type selected" id="mixedMode">
                         Mixed
                     </div>
                 </div>
-                <div class="col-2 text-end blue">
+                <div class="col-md-2 text-end blue">
                     <div class="mode-type" id="randomMode">
                         Random
                     </div>
                 </div>
             </div>    
         </div>
-
-
-
-    
-    
-
-    
- 
-
 
         <div class="container p-4 lead">
             <div class="row p-2 instructions-title"><span>Instructions</span></div>
@@ -107,18 +98,18 @@
         <div class="container playboard mb-4">
             
             <div class="row align-items-center mb-4">
-                <div class="col-2">
+                <div class="col-xs-12 col-md-2">
                     <div class="counter">
                         
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="col-xs-12 col-md-8">
                     <!--<div class="fretboard">-->
                         <img class="fretboard-image" src="../images/fretboard_transparent.png" alt="empty fretboard" width="100%">
                         
                     <!--</div>-->
                 </div>
-                <div class="col-2">
+                <div class="col-xs-12 col-md-2 d-none d-sm-block">
                     <div class="feedback-correct">
                         <img src="images/correct.png" alt="CORRECT">
                     </div>
@@ -130,59 +121,60 @@
             </div>
             
             <div class="row mb-4">
-                <div class="col-2">
+                <div class="col-xs-12 col-md-2">
 
                 </div>
-                <div class="col-8">
+                <div class="col-xs-12 col-md-8">
                     <div class="row note-grid">
-                        <div class="col-2">
-                            <button class="btn note" id="El"><h3>low E</h3></button>
+                        <div class="col-xs-4 col-md-2">
+                            <button class="btn note" id="El"><h3>Low E</h3></button>
                         </div>
-                        <div class="col-2">
-                            <button class="btn note" id="A"><h3>&#160&#160&#160 A &#160&#160&#160  </h3></button>
+                        <div class="col-xs-4 col-md-2">
+                            <button class="btn note" id="A"><h3>A</h3></button>
                         </div>
-                        <div class="col-2">
-                            <button class="btn note" id="D"><h3>&#160&#160&#160 D &#160&#160&#160</h3></button>
+                        <div class="col-xs-4 col-md-2">
+                            <button class="btn note" id="D"><h3>D</h3></button>
                         </div>
-                        <div class="col-2">
-                            <button class="btn note" id="G"><h3>&#160&#160&#160 G &#160&#160&#160</h3></button>
+                        <div class="col-xs-4 col-md-2">
+                            <button class="btn note" id="G"><h3>G</h3></button>
                         </div>
-                        <div class="col-2">
-                            <button class="btn note" id="B"><h3>&#160&#160&#160 B &#160&#160&#160</h3></button>
+                        <div class="col-xs-4 col-md-2">
+                            <button class="btn note" id="B"><h3>B</h3></button>
                         </div>
-                        <div class="col-2">
-                            <button class="btn note" id="Eh"><h3>high E</h3></button>
+                        <div class="col-xs-4 col-md-2">
+                            <button class="btn note" id="Eh"><h3>High E</h3></button>
                         </div>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-md-2">
 
                 </div>
             </div>
 
             <div class="row mb-4">
-                <div class="col-3">
+                <div class="col-xs-0 col-md-3">
 
                 </div>
-                <div class="col-1">
+                <div class="col-xs-6 col-md-3">
                     <div class="shuffle">
                         <button class="btn shuffle-btn" ><h2>Shuffle</h2></button>
                     </div>
 
                 </div>
-                <div class="col-4">
+                <div class="col-xs-6 col-md-3">
                     <div class="start-play">
                         <button class="btn play-btn" id="startplay" ><h2>Play</h2></button>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-xs-- col-md-3">
 
                 </div>
             </div>
         </div>   
-        <div class="container ">
-            <div class="row p-2 justify-content-center">
+            <div class="container ">
+                <div class="row p-2 justify-content-center">
                 <div class="col-auto  div-text game-over">Game Over</div>
+            </div>
         </div>
             
 
@@ -194,6 +186,6 @@
             <!--<a href="https://www.vecteezy.com/free-vector/web">Web Vectors by Vecteezy</a>-->
             <a href="https://www.vecteezy.com/free-vector/grunge">Grunge Vectors by Vecteezy</a>
         </footer>
-        </div>
+
     </body>
 </html> 
