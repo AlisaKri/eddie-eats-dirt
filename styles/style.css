@@ -1,8 +1,8 @@
 body {
     font-family: "Mulish", perpetua, serif;
-    /*background-image: url('../images/gold.jpg');*/
+    background-image: url('../images/gold.jpg');
     /*background-image: url('../images/Grey.jpg');*/
-    background-image: url('../images/DD\ White\ Wood\ Background\ 34220.svg');
+    /*background-image: url('../images/DD\ White\ Wood\ Background\ 34220.svg');*/
     /*background-image: url('../images/vecteezy_abstract-gray-wood-texture-design_256656/P90.jpg');*/
     /*background-image: url('../images/vecteezy_vector-wood-background-with-a-soft-gray-color_117400/free-vector-gray-wood-background.jpg');*/
     background-repeat: repeat;
@@ -80,6 +80,13 @@ h2{
     width: 100%;
     text-align: center;
 }
+  .note.correct {
+    background-color: green;
+  }
+
+  .note.wrong {
+    background-color: red;
+  }
 
 nav {
     color: #FFFFFF; }
@@ -187,18 +194,236 @@ footer a {
 
 
 .fretboard-touch .fretboard-button {
-    position: absolute;
-    top: 22%;
-    left: 5%;
     /*transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);*/
     background-color: #1573CC;
-    opacity: 50%;
+    opacity: 0%;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    height: 10%;
+    height: 8%;
+    width: 10%;
+  }
+  .fretboard-button.short {
+      width: 5%
+  }
+
+  .fretboard-button.correct {
+    background-color: green;
+    opacity: 50%;
+    transform: translateX(100%);
+    width: 5%;
+}
+
+  .fretboard-button.wrong {
+    background-color: red;
+    opacity: 50%;
+    transform: translateX(100%);
     width: 5%;
   }
+
+  #s0f0 {
+    position: absolute;
+    top: 22%;
+    left: 5%;
+  }
+
+  #s1f0 {
+    position: absolute;
+    top: 33%;
+    left: 5%;
+  }
+  #s2f0 {
+    position: absolute;
+    top: 45%;
+    left: 5%;
+  }
+  #s3f0 {
+    position: absolute;
+    top: 56%;
+    left: 5%;
+  }
+  #s4f0 {
+    position: absolute;
+    top: 68%;
+    left: 5%;
+  }
+  #s5f0 {
+    position: absolute;
+    top: 79%;
+    left: 5%;
+  }
+  #s0f1 {
+    position: absolute;
+    top: 22%;
+    left: 20.5%;
+  }
+
+  #s1f1 {
+    position: absolute;
+    top: 33%;
+    left: 20.5%;
+  }
+  #s2f1 {
+    position: absolute;
+    top: 45%;
+    left: 20.5%;
+  }
+  #s3f1 {
+    position: absolute;
+    top: 56.5%;
+    left: 20.5%;
+  }
+  #s4f1 {
+    position: absolute;
+    top: 69%;
+    left: 20.5%;
+  }
+  #s5f1 {
+    position: absolute;
+    top: 80%;
+    left: 20.5%;
+  }  
+  #s0f2 {
+    position: absolute;
+    top: 21%;
+    left: 39.5%;
+  }
+
+  #s1f2 {
+    position: absolute;
+    top: 33%;
+    left: 39.5%;
+  }
+  #s2f2 {
+    position: absolute;
+    top: 45%;
+    left: 39.5%;
+  }
+  #s3f2 {
+    position: absolute;
+    top: 56.5%;
+    left: 39.5%;
+  }
+  #s4f2 {
+    position: absolute;
+    top: 69%;
+    left: 39.5%;
+  }
+  #s5f2 {
+    position: absolute;
+    top: 81%;
+    left: 39.5%;
+  }  
+  #s0f3 {
+    position: absolute;
+    top: 21%;
+    left: 57%;
+  }
+
+  #s1f3 {
+    position: absolute;
+    top: 33%;
+    left: 57%;
+  }
+  #s2f3 {
+    position: absolute;
+    top: 45%;
+    left: 57%;
+  }
+  #s3f3 {
+    position: absolute;
+    top: 56.5%;
+    left: 57%;
+  }
+  #s4f3 {
+    position: absolute;
+    top: 69%;
+    left: 57%;
+  }
+  #s5f3 {
+    position: absolute;
+    top: 81%;
+    left: 57%;
+  }  
+
+  #s0f4 {
+    position: absolute;
+    top: 20%;
+    left: 73%;
+  }
+
+  #s1f4 {
+    position: absolute;
+    top: 32%;
+    left: 73%;
+  }
+  #s2f4 {
+    position: absolute;
+    top: 44.5%;
+    left: 73%;
+  }
+  #s3f4 {
+    position: absolute;
+    top: 57%;
+    left: 73%;
+  }
+  #s4f4 {
+    position: absolute;
+    top: 70%;
+    left: 73%;
+  }
+  #s5f4 {
+    position: absolute;
+    top: 82%;
+    left: 73%;
+  }  
+  
+  #s0f5 {
+    position: absolute;
+    top: 20%;
+    left: 88%;
+  }
+
+  #s1f5 {
+    position: absolute;
+    top: 32%;
+    left: 88%;
+  }
+  #s2f5 {
+    position: absolute;
+    top: 44.5%;
+    left: 88%;
+  }
+  #s3f5 {
+    position: absolute;
+    top: 57%;
+    left: 88%;
+  }
+  #s4f5 {
+    position: absolute;
+    top: 70%;
+    left: 88%;
+  }
+  #s5f5 {
+    position: absolute;
+    top: 82%;
+    left: 88%;
+  }  
+
+
+
+
+.random-note {
+    background-color: #EBF4FD;
+    opacity: 82%;
+    color: black;
+    border-radius: 10px 10px 10px 10px;
+    text-align: center;
+}
+
+.chord-buttons {
+  display: none;
+}
 

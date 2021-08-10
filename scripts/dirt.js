@@ -101,13 +101,24 @@ let checkButton = (event) => {
             case 69:
                 button = 'Eh';
                 break
-            default:
-                button = 'none';
+            case 115:
+                //alert('triggering shuffle buttons')
+                $('.note').off().on('click', checkButton);
+                $(document).on('keypress', checkKey);
+                return
         }
         var noteButtons = $('.note-grid').children();
         noteButtons.children('#' + button).addClass('pressed');
         //$('#' + button).addClass('pressed'); 
 
+    }
+
+    if (!ACTIVE_STRING){
+        // button pressed outside of play
+        $('.note').off().on('click', checkButton);
+        $(document).on('keypress', checkKey);
+        noteButtons.children('#' + button).removeClass('pressed');
+        return
     }
     if (button == ACTIVE_STRING) {
         CORRECT++;
@@ -121,7 +132,8 @@ let checkButton = (event) => {
         $('.feedback-incorrect').show();
     }
 
-    $('.counter').html(`${CORRECT} / ${GAMECOUNTER}`);
+    //$('.counter').html(`${CORRECT} / ${GAMECOUNTER}`);
+    $('.counter').html(`${CORRECT} / 10`);
 
     if (GAMECOUNTER < MAXGAME){
         startPlay();
@@ -163,13 +175,15 @@ async function startPlay () {
         $('.feedback-correct').hide();
         $('.feedback-incorrect').hide();
     }
-    $('.shuffle-btn').addClass('disabled');
-    $('.shuffle-btn').off();
+    //$('.shuffle-btn').addClass('disabled');
+    //$('.shuffle-btn').off();
     $('.play-btn').addClass('disabled');
     await showBlank();
     await resetBoard();
     var index = getRandomInt(6);
     ACTIVE_STRING = STRINGS[index - 1];
+    $('.note').off().on('click', checkButton);
+    $(document).on('keypress', checkButton);
     if (RANDOMMODE) {
         let randomNumber = Math.random();
         if (randomNumber > 0.66) {
@@ -199,8 +213,7 @@ async function startPlay () {
         }
         
     }
-    $('.note').off().on('click', checkButton);
-    $(document).on('keypress', checkButton);
+
 
 };    
 
@@ -213,11 +226,11 @@ async function stopGame() {
     $('.note').off();
     $('.play-btn').on('click');
     $('.play-btn').removeClass('disabled')
-    $('.shuffle-btn').removeClass('disabled');
-    $('.shuffle-btn').on('click');  
+    //$('.shuffle-btn').removeClass('disabled');
+    //$('.shuffle-btn').on('click');  
 
 
-    $('.shuffle-btn').off().one('click', shuffleButtons);
+    //$('.shuffle-btn').off().one('click', shuffleButtons);
     $('.play-btn').off().one('click', startPlay);
     $('.play-btn').html('<h2>Play Again<h2>');
     $(document).on('keypress', checkKey);
@@ -226,7 +239,7 @@ async function stopGame() {
 
 let shuffleButtons = () =>  {
     //shuffle order of buttons
-    $('.shuffle-btn').addClass('disabled');
+    //$('.shuffle-btn').addClass('disabled');
     var noteButtons = $('.note-grid').children();
     var orderClasses = ['order-1', 'order-2', 'order-3', 'order-4', 'order-5', 'order-6']
     var orderClassesUnchanged = ['order-1', 'order-2', 'order-3', 'order-4', 'order-5', 'order-6']
@@ -253,7 +266,7 @@ let checkKey = (event) => {
             shuffleButtons();
             break;
         default:
-            alert('doing nothing');
+            checkButton(event);
     }
 }
 
@@ -300,8 +313,8 @@ $(() => {
     })
 
 
-    $('.shuffle-btn').off().one('click', shuffleButtons)
-    //$('.shuffle-btn').on('click', shuffleButtons)
+    //$('.shuffle-btn').off().one('click', shuffleButtons)
+    $('.shuffle-btn').on('click', shuffleButtons)
     $('.play-btn').off().one('click', startPlay);
     $(document).on('keypress', checkKey);
 });
