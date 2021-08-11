@@ -1,5 +1,8 @@
 # eddie-eats-dirt
-A game to improve guitar fretboard literacy
+## VIDEO DEMO: https://youtu.be/W1fVJ1G-Shs
+## URL of website: https://alisakri.github.io/eddie-eats-dirt/index.html
+
+### Descrition: A game to improve guitar fretboard literacy
 
 In this project, I explored building a simple game using HTML and procedural-based JavaScript. The app has three mini-games: Eddie Ate Dirt, Eddie Says, and Find Eddie. 
 Each game managed by its own script and all four HTML pages are styled using the same CSS file. I am using bootstrap for responsive design and jQuery for most DOM manipulations.
