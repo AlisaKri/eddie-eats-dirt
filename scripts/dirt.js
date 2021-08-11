@@ -65,15 +65,6 @@ function loadSounds(){
 
     var sounds = document.querySelectorAll('audio');
     sounds.forEach( (element) => SOUNDS.push(element));
-    /*SOUNDS.push(sounds[0]);
-    SOUNDS.push(sounds[1]);
-    SOUNDS.push(sounds[2]);
-    SOUNDS.push(sounds[3]);
-    SOUNDS.push(sounds[4]);
-    SOUNDS.push(sounds[5]);*/
-    
-
-
 }
 
 let checkButton = (event) => {
