@@ -44,13 +44,20 @@ function loadImages() {
     IMAGES.push(fretboard_a);
     IMAGES.push(fretboard_el);   */
     var fretboards = $('.fretboard-image')
-    IMAGES.push($(fretboards.siblings('.empty')));
+    /*IMAGES.push($(fretboards.siblings('.empty')));
     IMAGES.push($(fretboards.siblings('.Eh')));
     IMAGES.push($(fretboards.siblings('.B')));
     IMAGES.push($(fretboards.siblings('.G')));
     IMAGES.push($(fretboards.siblings('.D')));
     IMAGES.push($(fretboards.siblings('.A')));
-    IMAGES.push($(fretboards.siblings('.El')));
+    IMAGES.push($(fretboards.siblings('.El')));*/
+    IMAGES.push($(fretboards[0]));
+    IMAGES.push($(fretboards[1]));
+    IMAGES.push($(fretboards[2]));
+    IMAGES.push($(fretboards[3]));
+    IMAGES.push($(fretboards[4]));
+    IMAGES.push($(fretboards[5]));
+    IMAGES.push($(fretboards[6]));
 }
 
 function loadSounds(){
@@ -209,9 +216,10 @@ async function startPlay () {
     }
     if (VISUALMODE) {
         var image = IMAGES[index];      
-        $('.fretboard-image').attr("src", image.src);
-        //$('.fretboard-image').hide()
-        //$('.')
+        //$('.fretboard-image').attr("src", image.src);
+        $('.fretboard-image').hide();
+        image.show();
+        
     }
     if (SOUNDMODE) {
         var sound = SOUNDS[index - 1];
