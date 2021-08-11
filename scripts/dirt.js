@@ -21,6 +21,7 @@ let getRandomInt = (max)  => {
   
 function loadImages() { 
     //preload images
+    // THIS DOESN'T WORK ON PAGES
     /*var fretboard_empty = new Image();
     var fretboard_eh = new Image();
     var fretboard_b = new Image();
@@ -43,44 +44,33 @@ function loadImages() {
     IMAGES.push(fretboard_d);
     IMAGES.push(fretboard_a);
     IMAGES.push(fretboard_el);   */
+
+    //rewrote this for PAGES
     var fretboards = $('.fretboard-image')
-    /*IMAGES.push($(fretboards.siblings('.empty')));
-    IMAGES.push($(fretboards.siblings('.Eh')));
-    IMAGES.push($(fretboards.siblings('.B')));
-    IMAGES.push($(fretboards.siblings('.G')));
-    IMAGES.push($(fretboards.siblings('.D')));
-    IMAGES.push($(fretboards.siblings('.A')));
-    IMAGES.push($(fretboards.siblings('.El')));*/
-    IMAGES.push($(fretboards[0]));
-    IMAGES.push($(fretboards[1]));
-    IMAGES.push($(fretboards[2]));
-    IMAGES.push($(fretboards[3]));
-    IMAGES.push($(fretboards[4]));
-    IMAGES.push($(fretboards[5]));
-    IMAGES.push($(fretboards[6]));
+    fretboards.each(function ()  {
+        IMAGES.push($(this))
+    }
+    );
 }
 
 function loadSounds(){
-    //preload sounds
-    /*var soundHighE = new Audio("../sounds/1st_String_E_64kb.mp3");
-    var soundB = new Audio("../sounds/2nd_String_B_64kb.mp3");
-    var soundG = new Audio("../sounds/3rd_String_G_64kb.mp3");
-    var soundD = new Audio("../sounds/4th_String_D_64kb.mp3");
-    var soundA = new Audio("../sounds/5th_String_A_64kb.mp3");
-    var soundLowE = new Audio("../sounds/6th_String_E_64kb.mp3");*/
+    //preload sounds => THIS DOESN'T WORK ON PAGES
+    /*
     var soundHighE = new Audio("../sounds/1st_String_E_short.mov");
     var soundB = new Audio("../sounds/2nd_String_B_short.mov");
     var soundG = new Audio("../sounds/3rd_String_G_short.mov");
     var soundD = new Audio("../sounds/4th_String_D_short.mov");
     var soundA = new Audio("../sounds/5th_String_A_short.mov");
-    var soundLowE = new Audio("../sounds/6th_String_E_short.mov");    
+    var soundLowE = new Audio("../sounds/6th_String_E_short.mov");   */ 
 
-    SOUNDS.push(soundHighE);
-    SOUNDS.push(soundB);
-    SOUNDS.push(soundG);
-    SOUNDS.push(soundD);
-    SOUNDS.push(soundA);
-    SOUNDS.push(soundLowE);
+    var sounds = document.querySelectorAll('audio');
+    sounds.forEach( (element) => SOUNDS.push(element));
+    /*SOUNDS.push(sounds[0]);
+    SOUNDS.push(sounds[1]);
+    SOUNDS.push(sounds[2]);
+    SOUNDS.push(sounds[3]);
+    SOUNDS.push(sounds[4]);
+    SOUNDS.push(sounds[5]);*/
     
 
 
@@ -163,7 +153,9 @@ let showBlank = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             $('.btn').removeClass('pressed');
-            $('.fretboard-image').attr("src", IMAGES[0].src);
+            //$('.fretboard-image').attr("src", IMAGES[0].src);
+            $('.fretboard-image').hide()
+            IMAGES[0].show();
             $('.feedback-correct').hide();
             $('.feedback-incorrect').hide();
             $('.game-over').hide();
