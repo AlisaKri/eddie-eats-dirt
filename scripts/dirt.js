@@ -21,7 +21,7 @@ let getRandomInt = (max)  => {
   
 function loadImages() { 
     //preload images
-    var fretboard_empty = new Image();
+    /*var fretboard_empty = new Image();
     var fretboard_eh = new Image();
     var fretboard_b = new Image();
     var fretboard_g = new Image(); 
@@ -42,7 +42,15 @@ function loadImages() {
     IMAGES.push(fretboard_g);
     IMAGES.push(fretboard_d);
     IMAGES.push(fretboard_a);
-    IMAGES.push(fretboard_el);   
+    IMAGES.push(fretboard_el);   */
+    var fretboards = $('.fretboard-image')
+    IMAGES.push($(fretboards.siblings('.empty')));
+    IMAGES.push($(fretboards.siblings('.Eh')));
+    IMAGES.push($(fretboards.siblings('.B')));
+    IMAGES.push($(fretboards.siblings('.G')));
+    IMAGES.push($(fretboards.siblings('.D')));
+    IMAGES.push($(fretboards.siblings('.A')));
+    IMAGES.push($(fretboards.siblings('.El')));
 }
 
 function loadSounds(){
@@ -202,6 +210,8 @@ async function startPlay () {
     if (VISUALMODE) {
         var image = IMAGES[index];      
         $('.fretboard-image').attr("src", image.src);
+        //$('.fretboard-image').hide()
+        //$('.')
     }
     if (SOUNDMODE) {
         var sound = SOUNDS[index - 1];

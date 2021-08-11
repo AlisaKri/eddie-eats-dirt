@@ -137,6 +137,34 @@ nav {
 
 }
 
+.fretboard-image{
+  width: 100%;
+}
+
+  .fretboard-image.Eh {
+    display: none;
+  }
+
+  .fretboard-image.B {
+    display: none;
+  }
+
+  .fretboard-image.G {
+    display: none;
+  }
+
+  .fretboard-image.D {
+    display: none;
+  }
+
+  .fretboard-image.A {
+    display: none;
+  }
+
+  .fretboard-image.El {
+    display: none;
+  }
+
 .feedback-text {
     opacity: 0%;
 }
